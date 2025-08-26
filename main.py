@@ -12,7 +12,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Enable CORS for frontend
+# Enable CORS for frontend check
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
