@@ -105,7 +105,7 @@ class BacktestHashGenerator:
         elif isinstance(data,list):
             # Handle lists - try to sort if possible
             try:
-                return sorted([BacktestHasher._normalize_dict(item) for item in data])
+                return sorted([BacktestHashGenerator._normalize_dict(item) for item in data])
             except TypeError:
                 raise TypeError("Unsortable list items found")
         else:
