@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.116.1",
+    "pandas>=2.3.2",
     "python-multipart>=0.0.20",
     "uvicorn[standard]>=0.35.0",
 ]
@@ -13,7 +14,11 @@ dependencies = [
 [dependency-groups]
 dev = [
     "black>=25.1.0",
+    "coverage>=7.10.6",
     "pytest>=8.4.1",
+    "pytest-asyncio>=1.1.0",
+    "pytest-cov>=6.2.1",
+    "pytest-mock>=3.14.1",
     "ruff>=0.12.10",
 ]
 
@@ -22,3 +27,25 @@ dev = "uv run python3 -m uvicorn main:app --reload --port 8000"
 test = "pytest"
 lint = "ruff check ."
 format = "black ."
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_functions = ["test_*"]
+python_classes = ["Test*"]
+addopts = [
+    "-v",                    # Verbose output
+    "--strict-markers",      # Strict marker usage
+    "--tb=short",           # Short traceback format
+    "--cov=engine",         # Coverage for engine module
+    "--cov=models",         # Coverage for models module  
+    "--cov=utils",          # Coverage for utils module
+    "--cov-report=term-missing",  # Show missing lines
+    "--cov-report=html:htmlcov",  # HTML coverage report
+]
+
+markers = [
+    "unit: Unit tests (fast, isolated)",
+    "integration: Integration tests (slower, with dependencies)",
+    "slow: Slow tests (mark tests that take > 1 second)",
+]

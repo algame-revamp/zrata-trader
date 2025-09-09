@@ -41,6 +41,36 @@ By default, the server will start at:
 - Use `uv remove <package>` to remove dependencies.
 - Run `uv sync` after updating dependencies.
 
+Architecture:
+
+```markdown
+zrata-trader/
+├── engine/
+│ ├── **init**.py
+│ ├── cache/
+│ │ ├── **init**.py
+│ │ ├── hasher.py # Creates unique IDs
+│ │ ├── storage.py # Database operations
+│ │ └── manager.py # Smart Filing Cabinet
+│ ├── strategies/
+│ │ ├── **init**.py
+│ │ └── factory.py # Creates strategy classes
+│ └── data/
+│ ├── **init**.py
+│ └── processor.py # Handles CSV data and other data
+├── models/
+│ ├── **init**.py
+│ └── schemas.py # Data models
+├── utils/
+│ ├── **init**.py
+│ └── helpers.py # Helper functions
+├── storage/
+│ └── .gitkeep # Database files go here (for future)
+├── main.py # FastAPI app ( maybe as it gets complex we will change this)
+├── pyproject.toml
+└── requirements.txt
+```
+
 For production, you may run without `--reload`:
 
 ```bash
