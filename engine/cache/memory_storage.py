@@ -22,7 +22,7 @@ from typing import Any, Dict, List, Optional, Set
 
 from models.backtest_models import BacktestRecord, CacheStats
 
-from .storage_interface import BacktestStorageInterface, RecordNotFoundError
+from .storage_interface import BacktestStorageInterface
 
 logger = logging.getLogger(__name__)
 
