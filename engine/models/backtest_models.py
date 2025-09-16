@@ -161,3 +161,5 @@ class CacheStats:
             "hit_rate": round(self.hit_rate * 100, 2),
             "miss_rate": round(self.miss_rate * 100, 2)
         }
+    
+    
