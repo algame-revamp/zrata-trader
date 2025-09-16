@@ -9,7 +9,7 @@ Using ABC (Abstract Base Class) allows us to:
 """
 
 from abc import ABC, abstractmethod
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 
 from models.backtest_models import BacktestRecord, CacheStats
 
